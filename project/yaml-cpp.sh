@@ -4,7 +4,7 @@ INSTALL_DIR=$1
 BUILD_DIR=$2
 CUR=`pwd`
 cd $BUILD_DIR
-if [ ! -d "$BUILD_DIR/yaml-cpp" ];then
+if [ ! -d "yaml-cpp" ];then
 	git clone https://github.com/jbeder/yaml-cpp.git
 	cd yaml-cpp
 else

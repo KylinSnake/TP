@@ -14,9 +14,7 @@ if [ ! -d "protobuf-3.6.1" ];then
 	tar zxvf ${FILE}
 fi
 
-
 cd protobuf-3.6.1
-#sudo install autoconf automake libtool curl make g++ unzip
 ./configure --prefix=$INSTALL_DIR
 make
 make check

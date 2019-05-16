@@ -4,6 +4,7 @@ BUILD=1
 CLEAN=0
 PARAM=
 PREFIX=
+FILTER=
 
 for opt in $@
 do
@@ -26,7 +27,9 @@ do
 
      *)
        if [ ${cmd:0:7} == 'PREFIX=' ]; then
-		   PREFIX=${cmd:7}
+		   PREFIX=${opt:7}
+	   elif [ ${cmd:0:7} == 'FILTER=' ]; then
+		   FILTER=${opt:7}
 	   else
 		   PARAM="$PARAM $opt "
 	   fi
@@ -66,6 +69,12 @@ if [ $BUILD -eq 1 ]; then
 	fi
 	for i in `ls --color=none ${FOLDER}/project/*.sh`
 	do
+		if [ ! -z "$FILTER" ];then
+			if [ "$i" != "${FOLDER}/project/${FILTER}.sh" ];then
+				echo "$i is filter out by $FILTER"
+				continue
+			fi
+		fi
 		$i $ROOT $BUILD_DIR $PARAM
 		if [ $? -ne 0 ];then
 			echo "Failed on $i $ROOT, exit..."
