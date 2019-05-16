@@ -16,7 +16,7 @@ fi
 #sudo install autoconf automake libtool curl make g++ unzip
 mkdir -p build
 cd build
-cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DBUILD_SHARED_LIBS=ON ../
+cmake -DCMAKE_INSTALL_PREFIX=$INSTALL_DIR -DBUILD_SHARED_LIBS=ON -DCMAKE_INSTALL_LIBDIR=lib ../
 cmake --build . --target install
 
 echo "Success to build LevelDb"
