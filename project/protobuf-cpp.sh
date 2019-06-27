@@ -17,12 +17,10 @@ fi
 cd protobuf-3.6.1
 ./configure --prefix=$INSTALL_DIR
 make
-make check
 if [ $? -ne 0 ];then
 	echo "Failed to build protobuf-cpp"
 	exit 1
 fi
 make install
-ldconfig
 echo "Success to build protobuf-cpp"
 cd $CUR
